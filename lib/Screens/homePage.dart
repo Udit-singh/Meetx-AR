@@ -1,19 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:meetx/Model/user.dart';
-import 'package:meetx/Screens/calendar_screen/calender_screen.dart';
 import 'package:meetx/Screens/chat_screen/chats/chat_list_screen.dart';
-import 'package:meetx/Screens/pickup_screen/pickup_screen.dart';
 import 'package:meetx/Screens/signIn.dart';
 import 'package:meetx/Widgets/customAppBar.dart';
-import 'package:meetx/Widgets/custom_card.dart';
 import 'package:meetx/Widgets/custom_card1.dart';
 import 'package:meetx/provider/user_provider.dart';
 import 'package:meetx/utils/Constants.dart';
-import 'package:provider/provider.dart';
-import 'package:wiredash/wiredash.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,10 +24,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     pageController = PageController();
     getUser();
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      userProvider = Provider.of<UserProvider>(context, listen: false);
-      userProvider.refreshUser();
-    });
   }
 
   User user;
@@ -60,12 +50,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: SafeArea(
         child: FloatingActionButton(
-          onPressed: Wiredash.of(context).show,
+          onPressed: () {},
           child: IconButton(
             icon: Icon(
               Icons.feedback_outlined,
             ),
-            onPressed: Wiredash.of(context).show,
+            onPressed: () {},
           ),
           backgroundColor: Colors.blue,
         ),
@@ -73,7 +63,6 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         children: [
           Center(child: Index()),
-          Center(child: Calender()),
           Center(child: ChatListScreen()),
         ],
         controller: pageController,
@@ -152,10 +141,7 @@ class Index extends StatelessWidget {
                 height: height * 0.74,
                 width: width * 0.9,
                 child: ListView(
-                  children: [
-                    CustomCard1(height: height, width: width),
-                    CustomCard(height: height, width: width),
-                  ],
+                  children: [],
                 ),
               ),
             ),
@@ -171,14 +157,7 @@ class Index extends StatelessWidget {
         icon: Icon(
           Icons.account_box_outlined,
         ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => PickupScreen(),
-            ),
-          );
-        },
+        onPressed: () {},
       ),
       centerTitle: true,
       title: Text(
@@ -207,11 +186,11 @@ class Index extends StatelessWidget {
     );
   }
 
-  // void choiceAction(String choice) {
-  //   if (choice == Constants.Settings) {
-  //     print('Settings');
-  //   } else if (choice == Constants.Report) {
-  //     print('Send Feedback');
-  //   }
-  // }
+  void choiceAction(String choice) {
+    if (choice == Constants.Settings) {
+      print('Settings');
+    } else if (choice == Constants.Report) {
+      print('Send Feedback');
+    }
+  }
 }

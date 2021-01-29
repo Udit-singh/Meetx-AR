@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:meetx/Screens/Ar_classroom/card_page.dart';
 
 class CustomCard1 extends StatelessWidget {
   const CustomCard1({@required this.height, @required this.width});
@@ -13,14 +11,7 @@ class CustomCard1 extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => CardPage(),
-              ),
-            );
-          },
+          onTap: () {},
           child: Card(
             elevation: 5,
             shape: RoundedRectangleBorder(
