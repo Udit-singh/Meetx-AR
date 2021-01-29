@@ -84,7 +84,7 @@ class _SignInState extends State<SignIn> {
                       Container(
                         height: height * 0.30,
                         child: Image.asset(
-                          '',
+                          'Assets/Images/logo.png',
                           alignment: Alignment.topCenter,
                         ),
                       ),
@@ -112,7 +112,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 CustomSignInButton(
-                  imageStringUrl: '',
+                  imageStringUrl: 'Assets/Images/google.png',
                   label: 'Google',
                   function: logIn,
                 ),
@@ -121,7 +121,7 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(fontSize: 20),
                 ),
                 CustomSignInButton(
-                  imageStringUrl: '',
+                  imageStringUrl: 'Assets/Images/github.png',
                   label: 'Github',
                   function: githubLogIn,
                 ),
