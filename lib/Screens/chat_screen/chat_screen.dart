@@ -7,6 +7,7 @@ import 'package:meetx/Screens/signIn.dart';
 import 'package:meetx/Widgets/customAppBar.dart';
 import 'package:meetx/Widgets/custom_tile.dart';
 import 'package:meetx/Model/chat_methods.dart';
+import 'package:meetx/utils/call_utilities.dart';
 
 class ChatScreen extends StatefulWidget {
   final User receiver;
@@ -348,7 +349,11 @@ class _ChatScreenState extends State<ChatScreen> {
           icon: Icon(
             Icons.video_call,
           ),
-          onPressed: () {},
+          onPressed: () async => CallUtils.dial(
+            from: sender,
+            to: widget.receiver,
+            context: context,
+          ),
         ),
         IconButton(
           icon: Icon(

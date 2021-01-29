@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meetx/Screens/homePage.dart';
 import 'package:meetx/Screens/signIn.dart';
+import 'package:meetx/provider/user_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'Model/user.dart';
 
@@ -23,6 +25,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
   Future<User> getCurrentUser() async {
     User user;
     DocumentSnapshot doc =
@@ -33,20 +37,25 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          buttonColor: Colors.white, backgroundColor: Colors.grey[100]),
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-        future: getCurrentUser(),
-        builder: (context, AsyncSnapshot<User> snapshot) {
-          if (snapshot.hasData) {
-            return HomePage();
-          } else {
-            return SignIn();
-          }
-        },
-      ),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UserProvider()),
+        ],
+        child: MaterialApp(
+          navigatorKey: _navigatorKey,
+          theme: ThemeData(
+              buttonColor: Colors.white, backgroundColor: Colors.grey[100]),
+          debugShowCheckedModeBanner: false,
+          home: FutureBuilder(
+            future: getCurrentUser(),
+            builder: (context, AsyncSnapshot<User> snapshot) {
+              if (snapshot.hasData) {
+                return HomePage();
+              } else {
+                return SignIn();
+              }
+            },
+          ),
+        ));
   }
 }
