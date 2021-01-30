@@ -37,9 +37,14 @@ dependencies:
   firebase_messaging: ^7.0.3
   provider: ^4.0.3
   cached_network_image: ^2.5.0
+  googleapis: ^0.55.0
+  googleapis_auth: ^0.2.12
   url_launcher: ^5.5.0
+  flutter_datetime_picker: ^1.3.8
+  syncfusion_flutter_calendar: ^18.3.40
   intl: ^0.16.0
   echoar_package: "^0.0.1+2"
+  wiredash: ^0.3.0
 
 dev_dependencies:
   flutter_test:

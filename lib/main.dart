@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meetx/Screens/Ar_classroom/keys.dart';
 import 'package:meetx/Screens/homePage.dart';
 import 'package:meetx/Screens/signIn.dart';
 import 'package:meetx/provider/user_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:wiredash/wiredash.dart';
 
 import 'Model/user.dart';
 
@@ -18,6 +20,8 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
+
+
 
 class MyApp extends StatefulWidget {
   @override
@@ -38,9 +42,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => UserProvider()),
-        ],
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: Wiredash(
+        projectId: projectId,
+        secret: secretKey,
+        navigatorKey: _navigatorKey,
         child: MaterialApp(
           navigatorKey: _navigatorKey,
           theme: ThemeData(
@@ -56,6 +64,8 @@ class _MyAppState extends State<MyApp> {
               }
             },
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -60,12 +60,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: SafeArea(
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: Wiredash.of(context).show,
           child: IconButton(
             icon: Icon(
               Icons.feedback_outlined,
             ),
-            onPressed: () {},
+            onPressed: Wiredash.of(context).show,
           ),
           backgroundColor: Colors.blue,
         ),
@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         children: [
           Center(child: Index()),
+          Center(child: Calender()),
           Center(child: ChatListScreen()),
         ],
         controller: pageController,
