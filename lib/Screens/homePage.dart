@@ -3,13 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:meetx/Model/user.dart';
+import 'package:meetx/Screens/calendar_screen/calender_screen.dart';
 import 'package:meetx/Screens/chat_screen/chats/chat_list_screen.dart';
+import 'package:meetx/Screens/pickup_screen/pickup_screen.dart';
 import 'package:meetx/Screens/signIn.dart';
 import 'package:meetx/Widgets/customAppBar.dart';
 import 'package:meetx/Widgets/custom_card.dart';
 import 'package:meetx/Widgets/custom_card1.dart';
 import 'package:meetx/provider/user_provider.dart';
+import 'package:meetx/utils/Constants.dart';
 import 'package:provider/provider.dart';
+import 'package:wiredash/wiredash.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -137,6 +141,7 @@ class Index extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
+      appBar: customAppBar(context),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -157,5 +162,55 @@ class Index extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  CustomAppBar customAppBar(context) {
+    return CustomAppBar(
+      leading: IconButton(
+        icon: Icon(
+          Icons.account_box_outlined,
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => PickupScreen(),
+            ),
+          );
+        },
+      ),
+      centerTitle: true,
+      title: Text(
+        "MeetX Home",
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(
+            Icons.more_vert,
+          ),
+          onPressed: () {
+            PopupMenuButton<String>(
+              onSelected: choiceAction,
+              itemBuilder: (BuildContext context) {
+                return Constants.choices.map((String choice) {
+                  return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice),
+                  );
+                }).toList();
+              },
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  void choiceAction(String choice) {
+    if (choice == Constants.Settings) {
+      print('Settings');
+    } else if (choice == Constants.Report) {
+      print('Send Feedback');
+    }
   }
 }
