@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:meetx/Model/contact.dart';
 import 'package:meetx/Model/message.dart';
 import 'package:meetx/Screens/signIn.dart';
 import 'package:meta/meta.dart';
