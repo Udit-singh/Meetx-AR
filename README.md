@@ -1,4 +1,4 @@
-## meetx - Hack APAC
+## meetx - AR
 
 A new Flutter project.
 
