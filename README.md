@@ -1,6 +1,6 @@
 ## Meetx - AR
 
-![ ](https://raw.githubusercontent.com/Udit-singh/Meetx-AR/main/Assets/Images/Screenshot%20(2349).png?token=ANHCFC2KUXJKQE57HZ3YRQDAE5TNC)
+![Preview](https://github.com/Udit-singh/Meetx-AR/blob/main/Assets/Images/Screenshot%20(2349).png)
 
 ## Inspiration
 Considering the current online mode of education, there is a void between the learnings outcome, To fill that void Augmented reality plays a major role in education field.
