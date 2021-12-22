@@ -1,4 +1,9 @@
 ## Meetx - AR
+• An **Augmented Reality** based education app that comes with echoAR augmented reality custom-built models with enhance user experience and components and also has broadcasting and one-one video calling feature.<br/>• Provides calendar feature which syncs across multiple devices and implemented a one-click feedback assistant.
+
+### Screenshots 
+
+![ ](https://udit-portfolio.netlify.app/images/1.png)
 
 ![Preview](https://github.com/Udit-singh/Meetx-AR/blob/main/Assets/Images/Screenshot%20(2349).png)
 
